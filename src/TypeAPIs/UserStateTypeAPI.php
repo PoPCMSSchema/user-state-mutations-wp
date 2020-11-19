@@ -6,6 +6,7 @@ namespace PoPSchema\UserStateMutationsWP\TypeAPIs;
 
 use PoPSchema\UserStateMutations\TypeAPIs\UserStateTypeAPIInterface;
 use PoP\ComponentModel\Misc\GeneralUtils;
+use PoP\Engine\ErrorHandling\ErrorUtils;
 
 /**
  * Methods to interact with the Type, to be implemented by the underlying CMS
@@ -37,7 +38,7 @@ class UserStateTypeAPI implements UserStateTypeAPIInterface
             \wp_set_current_user($user->ID);
         }
 
-        return \PoP\Application\Utils::returnResultOrConvertError($result);
+        return ErrorUtils::returnResultOrConvertError($result);
     }
 
     public function logout(): void
